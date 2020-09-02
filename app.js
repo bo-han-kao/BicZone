@@ -38,4 +38,10 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+
+// 監聽port5000有沒有啟動
+app.listen(5000, function () {
+  console.log('伺服器開啟!!')
+})
+
 module.exports = app;
