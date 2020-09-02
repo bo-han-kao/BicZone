@@ -1,1 +1,4 @@
-# BicZone
+＃BicZone
+使用express產生器建立
+使用ejs樣板
+議在電腦全域安裝nodemon方便開發
