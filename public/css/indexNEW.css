@@ -96,6 +96,8 @@ html, body{
     height: 100%;
     background: rgb(183, 221, 13);
   }
+
+  
   @media (max-width: 767px) {
     .nav-side-menu {
       position: relative;
