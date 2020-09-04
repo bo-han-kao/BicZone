@@ -9,51 +9,62 @@
 </head>
 
 <body>
-    <div class="nav-side-menu">
-        <div class="brand">Brand Logo</div>
-        <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 
-        <div class="menu-list">
+    <div class="index-container ">
 
-            <ul id="menu-content" class="menu-content collapse out">
-                <li>
-                    <a href="#">
-                        <i class="fa fa-dashboard fa-lg"></i> Dashboard
-                    </a>
-                </li>
+        <nav class="index-nav">
+            <div class="nav-side-menu">
+                <div class="brand">Brand Logo</div>
+                <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 
-                <li>
-                    <a href="#">
-                        <i class="fa fa-user fa-lg"></i> Profile
-                    </a>
-                </li>
+                <div class="menu-list">
 
-                <li class="active">
-                    <a href="#">
-                        <i class="fa fa-users fa-lg "></i> Users
-                    </a>
-                </li>
-            </ul>
+                    <ul id="menu-content" class="menu-content collapse out">
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-dashboard fa-lg"></i> Dashboard
+                            </a>
+                        </li>
 
-        </div>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-user fa-lg"></i> Profile
+                            </a>
+                        </li>
+
+                        <li class="active">
+                            <a href="#">
+                                <i class="fa fa-users fa-lg "></i> Users
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+
+
+        <!-- 你寫html的地方 --------------------------------------------->
+        <main class="index-main">
+            <div class="yourhtml">
+                <h1>放你的html</h1>
+            </div>
+           
+
+
+
+
+
+
+
+
+        </main>
+        <!-------------------------------------------------------------->
     </div>
 
-<!-- 你寫html的地方 --------------------------------------------->
+
+    <!-- 放入本頁的js ------------------------------------->
 
 
-
-
-
-
-
-
-
-<!-------------------------------------------------------------->
-
-
-
-<!-- 放入本頁的js ------------------------------------->
-
-
-<!-------------------------------------------------------------->
-<%-include('footer');-%>
+    <!-------------------------------------------------------------->
+    <%-include('footer');-%>
