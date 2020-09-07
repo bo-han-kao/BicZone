@@ -7,8 +7,11 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var deviceRouter= require('./routes/device');
+var groupRouter =require('./routes/group');
 // 測試頁面
 var indexNEWRouter=require('./routes/Test');
+const { group } = require('console');
 
 
 
@@ -26,7 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
+app.use('/v1/device',deviceRouter);
+app.use('/v1/group',groupRouter);
 // 測試頁面
 app.use('/Test',indexNEWRouter);
 
