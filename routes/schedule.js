@@ -3,7 +3,7 @@ var router = express.Router();
 
 // 測試頁面
 router.get('/', function(req, res, next) {
-  res.render('scene');
+  res.render('schedule');
 });
 
 module.exports = router;
