@@ -13,6 +13,7 @@ var sceneRouter =require('./routes/scene');
 var scheduleRouter=require('./routes/schedule')
 // 測試頁面
 var indexNEWRouter=require('./routes/Test');
+var crudROuter=require('./routes/CRUDtest');
 const { group } = require('console');
 
 
@@ -37,7 +38,7 @@ app.use('/v1/scene',sceneRouter);
 app.use('/v1/schedule',scheduleRouter);
 // 測試頁面
 app.use('/Test',indexNEWRouter);
-
+app.use('/crudtest',crudROuter);
 
 app.get('/mesh/scan', function(req, res, next) {
   res.render('scan');

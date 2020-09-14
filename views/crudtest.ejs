@@ -1,0 +1,77 @@
+<%-include('header');-%>
+
+<link rel=stylesheet type="text/css" href="/css/indexNEW.css">
+<!-- 放入本頁的css --------------------------------------------->
+
+
+
+<!-------------------------------------------------------------->
+</head>
+
+<body>
+
+    <div class="index-container ">
+
+        <%-include('navbar');-%>
+
+
+        <!-- 你寫html的地方 --------------------------------------------->
+        <main class="index-main">
+            <div class="yourhtml">
+                <div class="container">
+                    <h1 class="display-4 text-center py-1">Hello, TODO</H1>
+                    <!-- input area -->
+                    <div class="jumbotron p-3 shadow-sm">
+                        <form method="POST" action="crudtest/create-item">
+                            <div class="d-flex align-items-center">
+                                <input autofocus autocomplete="off" class="form-control mr-3" type="text" style="flex: 1;" name="item">
+                                <button class="btn btn-primary">新增項目</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- // input area -->
+                    <!-- list area -->
+                    <ul class="list-group pb-5">
+                        <li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
+                        <span class="item-text">Fake example item #1</span>
+                        <div>
+                        <button class="edit-me btn btn-secondary btn-sm mr-1">Edit</button>
+                        <button class="delete-me btn btn-danger btn-sm">Delete</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
+                        <span class="item-text">Fake example item #2</span>
+                        <div>
+                        <button class="edit-me btn btn-secondary btn-sm mr-1">Edit</button>
+                        <button class="delete-me btn btn-danger btn-sm">Delete</button>
+                        </div>
+                        </li>
+                    <li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
+                        <span class="item-text">Fake example item #3</span>
+                        <div>
+                        <button class="edit-me btn btn-secondary btn-sm mr-1">Edit</button>
+                        <button class="delete-me btn btn-danger btn-sm">Delete</button>
+                        </div>
+                        </li>
+                    </ul>
+                    <!-- //list area -->
+                    </div>
+            </div>
+
+
+
+
+
+
+
+
+
+        </main>
+        <!-------------------------------------------------------------->
+    </div>
+
+    <!-- 放入本頁的js ------------------------------------->
+
+
+    <!-------------------------------------------------------------->
+    <%-include('footer');-%>
