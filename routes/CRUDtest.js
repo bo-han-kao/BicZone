@@ -8,15 +8,23 @@ firebase.initializeApp({
 });
 
 
-// iddleware程式碼，這樣才能抓倒頁面資料
+// middleware程式碼，這樣才能抓倒頁面資料
 router.use(express.urlencoded({
   extended: false
 }));
+
 // 測試頁面
 router.get('/', function (req, res, next) {
-  res.render('crudtest');
-  // var db = firebase.database();
-  console.log(db)
+  var db = firebase.database();
+
+  db.ref('todos').once('value', function (inputdata) {
+    var data = inputdata.val();
+    console.log(data);
+    res.render('crudtest', {
+      "listdata": data
+    });
+  });
+  
 });
 
 
@@ -29,13 +37,15 @@ router.post('/create-item', function (req, res) {
   itemRef.set({
     "item": item
   }).then(function () {
-    db.ref('todos').once('value', function (snapshot) {
+    db.ref('todos').once('value', function (inputdata) {
       // res.send(snapshot.val())
+      // console.log(inputdata.val());
     })
   });
 
   // res.redirect(‘/’)完成後跳轉頁面
   res.redirect('/crudtest');
 })
+
 
 module.exports = router;
