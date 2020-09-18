@@ -13,6 +13,9 @@ router.use(express.urlencoded({
   extended: false
 }));
 
+
+router.use(express.json());
+
 // 測試頁面
 router.get('/', function (req, res, next) {
   var db = firebase.database();
@@ -24,7 +27,7 @@ router.get('/', function (req, res, next) {
       "listdata": data
     });
   });
-  
+
 });
 
 
@@ -47,5 +50,25 @@ router.post('/create-item', function (req, res) {
   res.redirect('/crudtest');
 })
 
+
+router.post('/update-item', function (req, res) {
+  console.log(req.body.text)
+  var db = firebase.database();
+  var id = req.body.id;
+  // console.log(id);
+  var dbRef = db.ref('todos/' + id);
+  dbRef.update({
+    item: req.body.text
+  });
+  res.send("更新成功")
+});
+
+router.post('/delete-item', function (req, res) {
+  var db = firebase.database();
+  var id = req.body.id
+  var dbRef = db.ref('todos/' + id)
+  dbRef.remove();
+  res.send("Delete Success")
+  });
 
 module.exports = router;

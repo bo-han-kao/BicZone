@@ -63,7 +63,7 @@ app.use(function(err, req, res, next) {
 
 
 // 監聽port5000有沒有啟動
-app.listen(5000, function () {
+app.listen(8000, function () {
   console.log('伺服器開啟!!')
 })
 
