@@ -41,7 +41,12 @@ app.use('/Test',indexNEWRouter);
 app.use('/crudtest',crudROuter);
 
 app.get('/mesh/scan', function(req, res, next) {
-  res.render('scan');
+  var scandata = require('./scandata.json');
+  var device=scandata.payload.devices
+  console.log(device);
+  res.render('scan',{
+    devices:device,
+  });
 });
 
 
@@ -62,7 +67,7 @@ app.use(function(err, req, res, next) {
 });
 
 
-// 監聽port5000有沒有啟動
+// 監聽port8000有沒有啟動
 app.listen(8000, function () {
   console.log('伺服器開啟!!')
 })

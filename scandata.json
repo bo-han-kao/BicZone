@@ -1,0 +1,34 @@
+{
+    "code": 200,
+    "message": "device scan",
+    "payload": {
+        "devices": [
+            {
+                "UUID": "c8c421bc120e7c44bc6a7a19803f2353",
+                "dBm": -67,
+                "name": "DT6"
+            },
+            {
+                "UUID": "1b5b5066590c824a8a427186fd6b2352",
+                "dBm": -85,
+                "name": "DT6-1"
+            },
+            {
+                "UUID": "c0637c72bc268745b4c973281c5a2353",
+                "dBm": -86,
+                "name": "DT6-2"
+            },
+            {
+                "UUID": "c0637c72bc268745b4c973281c5a2353",
+                "dBm": -86,
+                "name": "DT6-3"
+            },
+            {
+                "UUID": "c0637c72bc268745b4c973281c5a2353",
+                "dBm": -86,
+                "name": "DT6-4"
+            }
+        ]
+    },
+    "status": "success"
+}															
