@@ -18,37 +18,35 @@
         <main class="index-main">
             <div class="yourhtml">
                 <div class="container">
-                    <h4 class="display-4 text-center py-1">選擇要連線的裝置</h4>
+                    <h4 class="display-4 text-center py-1">選擇要配對的裝置</h4>
                     <ul class="list-group pb-5">
 
                         <% devices.forEach(function(items) { %>
                         <li
                             class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
                             <div class="d-flex ">
+
                                 <div>
-                                     <i class="far fa-lightbulb fa-lg pt-3 pr-3"></i>
+                                    <i class="far fa-lightbulb fa-lg pt-3 pr-3"></i>
                                 </div>
-                               
+
                                 <div class="d-flex flex-column">
                                     <span id="deviceId" class="item-text"><%=items.name%></span>
                                     <span id="deviceId" class="item-text"><%=items.UUID%></span>
                                 </div>
                             </div>
 
+
+
+
+
                             <div>
-                                <button class="edit-me btn btn-secondary btn-sm mr-1">Edit</button>
-                                <button class="delete-me btn btn-danger btn-sm">Delete</button>
+                                <button type="button" class="btn btn-outline-success mr-2">link</button>
+                                <button class=" btn btn-outline-primary btn-sm"><i class="fas fa-wifi"></i></button>
                             </div>
                         </li>
                         <% }); %>
-                        <!-- <li
-                            class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
-                            <span class="item-text">Fake example item #3</span>
-                            <div>
-                                <button class="edit-me btn btn-secondary btn-sm mr-1">Edit</button>
-                                <button class="delete-me btn btn-danger btn-sm">Delete</button>
-                            </div>
-                        </li> -->
+
 
                     </ul>
                 </div>

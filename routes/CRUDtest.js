@@ -16,7 +16,7 @@ router.use(express.urlencoded({
 
 router.use(express.json());
 
-// 測試頁面
+//讀取資料庫資料
 router.get('/', function (req, res, next) {
   var db = firebase.database();
 

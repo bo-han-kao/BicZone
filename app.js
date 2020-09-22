@@ -7,14 +7,16 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var deviceRouter= require('./routes/device');
-var groupRouter =require('./routes/group');
-var sceneRouter =require('./routes/scene');
-var scheduleRouter=require('./routes/schedule')
+var deviceRouter = require('./routes/device');
+var groupRouter = require('./routes/group');
+var sceneRouter = require('./routes/scene');
+var scheduleRouter = require('./routes/schedule');
+var scanRouter=require('./routes/scan');
 // 測試頁面
-var indexNEWRouter=require('./routes/Test');
-var crudROuter=require('./routes/CRUDtest');
+var indexNEWRouter = require('./routes/Test');
+var crudROuter = require('./routes/CRUDtest');
 const { group } = require('console');
+const { url } = require('inspector');
 
 
 
@@ -32,31 +34,31 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/v1/device',deviceRouter);
-app.use('/v1/group',groupRouter);
-app.use('/v1/scene',sceneRouter);
-app.use('/v1/schedule',scheduleRouter);
+app.use('/v1/device', deviceRouter);
+app.use('/v1/group', groupRouter);
+app.use('/v1/scene', sceneRouter);
+app.use('/v1/schedule', scheduleRouter);
+app.use('/mesh/scan', scanRouter);
 // 測試頁面
-app.use('/Test',indexNEWRouter);
-app.use('/crudtest',crudROuter);
+app.use('/Test', indexNEWRouter);
+app.use('/crudtest', crudROuter);
 
-app.get('/mesh/scan', function(req, res, next) {
-  var scandata = require('./scandata.json');
-  var device=scandata.payload.devices
-  console.log(device);
-  res.render('scan',{
-    devices:device,
-  });
-});
+
+
+
+
+
+
+
 
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

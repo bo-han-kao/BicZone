@@ -22,12 +22,8 @@
                 "UUID": "c0637c72bc268745b4c973281c5a2353",
                 "dBm": -86,
                 "name": "DT6-3"
-            },
-            {
-                "UUID": "c0637c72bc268745b4c973281c5a2353",
-                "dBm": -86,
-                "name": "DT6-4"
             }
+            
         ]
     },
     "status": "success"
