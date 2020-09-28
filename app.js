@@ -12,6 +12,7 @@ var groupRouter = require('./routes/group');
 var sceneRouter = require('./routes/scene');
 var scheduleRouter = require('./routes/schedule');
 var scanRouter=require('./routes/scan');
+var upload=require('./routes/upload');
 // 測試頁面
 var indexNEWRouter = require('./routes/Test');
 var crudROuter = require('./routes/CRUDtest');
@@ -39,6 +40,7 @@ app.use('/v1/group', groupRouter);
 app.use('/v1/scene', sceneRouter);
 app.use('/v1/schedule', scheduleRouter);
 app.use('/mesh/scan', scanRouter);
+app.use('/v1/upload',upload);
 // 測試頁面
 app.use('/Test', indexNEWRouter);
 app.use('/crudtest', crudROuter);

@@ -32,6 +32,7 @@ router.use(express.json());
 
 
 router.get('/', async (req, res) => {
+  // 假資料測試用
   // const response = await (await axios.get('http://localhost:8000/mesh/scan/get-data')).data;
   // const response = await (await axios.get('http://localhost:5000/v1/mesh/scan')).data;
   res.render('scan',{

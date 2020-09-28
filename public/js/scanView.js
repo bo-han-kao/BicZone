@@ -2,6 +2,7 @@
 $(document).ready(function () {
     setInterval(function () {
         $.ajax({
+            // 假資料測試用
             // "url": "http://localhost:8000/mesh/scan/get-data",
             "url": "http://localhost:5000/v1/mesh/scan",
             "success": function (data) {
