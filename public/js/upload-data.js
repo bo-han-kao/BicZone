@@ -7,7 +7,7 @@ fileUploader.addEventListener('change', (e) => {
 $('#upload').on('click', function() {
     var file_data = $('#blocktxt').prop('files')[0];   //取得上傳檔案屬性
     var form_data = new FormData();  //建構new FormData()
-    form_data.append('file',file_data);  //物件加到file後面
+    form_data.append('file',file_data);  //物件加到file後面  從後端拿取名稱用file
     console.log(form_data);
     $.ajax({
                 url: 'http://localhost:8000/v1/upload',

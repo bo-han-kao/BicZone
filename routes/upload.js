@@ -10,10 +10,10 @@ router.get('/', function (req, res, next) {
   res.render('upload');
 });
 
-router.post('/',upload.array(), function (req, res, next) {
-  let formData = req.body;
+router.post('/',upload.array('file'), function (req, res, next) {
+  let formData = req.files;
   console.log(formData);
-  // res.status(200).send(formData);
+  
 });
 
 module.exports = router;
