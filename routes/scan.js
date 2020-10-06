@@ -8,6 +8,7 @@ router.use(express.urlencoded({
 }));
 
 
+
 router.use(express.json());
 // router.get('/', function(req, res, next) {
 //     var scandata = require('../scandata.json');

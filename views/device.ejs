@@ -10,36 +10,106 @@
 
 <body>
 
-    <div class="index-container ">
+  <div class="index-container ">
 
-        <%-include('navbar');-%>
+    <%-include('navbar');-%>
 
 
-        <!-- 你寫html的地方 --------------------------------------------->
-        <main class="index-main">
-            <div class="yourhtml">
-                <div class="wrap">
-  
-                    <ul class="tabs group">
-                      <li><a class="active" href="#/one">Light &</a></li>
-                      <li><a href="#/two">Sexy</a></li>
-                      <li><a href="#/three">Tabs</a></li>
-                    </ul>
-                    
-                    <div id="content">
-                      <p id="one">Some text about Light sit amet, consectetur adipisicing elit. Pariatur modi quod quo iure recusandae eligendi q.t, consectetur adipisicing elit. Pariatur </p>
-                      <p id="two">Sexy sexy  consectetur adipisicing elit. Pariatur modi quod quo iure recusandae eligendi q.t, consectetur adipisicing elit. Pariatur modi quod quo iureq</p>
-                      <p id="three">Tabs , consectetur adipisicing elit. Pariatur modi quod quo iure recusandae eligendi q.t, consectetur adipisicing elit. Pariatur modi quod quo iureq</p>
+    <!-- 你寫html的地方 --------------------------------------------->
+    <main class="index-main">
+      <div class="yourhtml">
+        <div id="tab-demo" class="pl-1 pr-1 pt-3">
+          <ul class="tab-title">
+            <li><a href="#tab01">tab01</a></li>
+            <li><a href="#tab02">tab02</a></li>
+            <li><a href="#tab03">tab03</a></li>
+          </ul>
+          <div id="tab01" class="tab-inner">
+
+            <div class="row row-cols-1 row-cols-md-3">
+              <div class="col mb-4">
+                <div class="card h-100">
+                  <div class="row no-gutters">
+                    <div class="col-md-4">
+                      <img src="..." class="card-img" alt="...">
                     </div>
-                    
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                          additional content. This content is a little bit longer.</p>
+
+                      </div>
+                    </div>
                   </div>
+                </div>
+              </div>
+              <div class="col mb-4">
+                <div class="card h-100">
+                  <div class="row no-gutters">
+                    <div class="col-md-4">
+                      <img src="..." class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                          additional content. This content is a little bit longer.</p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col mb-4">
+                <div class="card h-100">
+                  <div class="row no-gutters">
+                    <div class="col-md-4">
+                      <img src="..." class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                          additional conten</p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col mb-4">
+                <div class="card h-100">
+                  <div class="row no-gutters">
+                    <div class="col-md-4">
+                      <img src="..." class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                          additional content. This content is a little bit longer.</p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-        </main>
-        <!-------------------------------------------------------------->
-    </div>
-
-    <!-- 放入本頁的js ------------------------------------->
-    <script src="/js/device.js"></script>
-
+          </div>
+          <div id="tab02" class="tab-inner">
+            <p>tab02的內容</p>
+          </div>
+          <div id="tab03" class="tab-inner">
+            <p>tab03的內容</p>
+          </div>
+        </div>
+    </main>
     <!-------------------------------------------------------------->
-    <%-include('footer');-%>
+  </div>
+
+  <!-- 放入本頁的js ------------------------------------->
+  <script src="/js/device.js"></script>
+
+  <!-------------------------------------------------------------->
+  <%-include('footer');-%>

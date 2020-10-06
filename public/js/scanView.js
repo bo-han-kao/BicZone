@@ -1,11 +1,11 @@
 $(document).ready(function () {
 
-    var countInterval=setInterval(function interval() {
+    var countInterval = setInterval(function interval() {
         $.ajax({
             // 假資料測試用
             // "url": "http://localhost:8000/mesh/scan/get-data",
-            "url": "http://localhost:5000/v1/mesh/scan",
-            "success": function (data) {
+            url: "http://localhost:5000/v1/mesh/scan",
+            success: function (data) {
                 console.log(data.payload)
                 let orders = data.payload.devices
                 let str = "";
@@ -33,17 +33,35 @@ $(document).ready(function () {
                 $('#menu').html(str);
 
                 // 重新綁定才不會受setInterval影響
-                $(document).off("click").on("click", function (e) {
+                $(".btn").off("click").on("click", function (e) {
                     let _id = e.target.getAttribute("data-id");
                     console.log(_id);
+                    var devices={"uuid":_id}
+
+
+                    $.ajax({
+                        url: "http://127.0.0.1:5000/v1/device",
+                        data: JSON.stringify({ devices: devices }),
+                        type: "POST",
+                        dataType: "json",
+                        contentType: "application/json;charset=utf-8",
+                        success: function (returnData) {
+                            console.log(returnData);
+                            alert("配對成功");
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            console.log(xhr.status);
+                            console.log(thrownError);
+                        }
+                    });
                 });
             },
             "error": function (error) {
                 console.log(error);
             }
         })
-    
-    return interval;  
+
+        return interval;
     }(), 10000);
 
 })
