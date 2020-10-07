@@ -7,39 +7,135 @@
     <title>Document</title>
 
     <style>
-        html{
-            width: 100%;
-            height: 100%;
+        .toggle-wrapper {
+            position: absolute;
+            top: 120%;
+            left: 30%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            width: 5rem;
+            height: 2.5rem;
+            font-family: sans-serif;
+            font-size: 0.75rem;
+            font-weight: 100;
         }
 
-        body{
-            margin:0;
-            width: 100%;
-            height: 100%;
+        .toggle {
+            display: none;
         }
 
-        .box1{
-            width: 50px;
-            height: 100px;
-            background: #000;
-        }        
-
-        .bxo2{
-            width: calc(100%-50px);
-            height: 100px;
-            background: red;
+        .foux-toggle {
+            position: relative;
+            width: 5rem;
+            height: 2.5rem;
+            border-radius: 2.5rem;
+            margin: 0;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #e4e4e4;
+            background-color: #f7f7f7;
+            -webkit-transition: background-color 0.2s cubic-bezier(0.34, 0.93, 0.85, 0.91);
+            transition: background-color 0.2s cubic-bezier(0.34, 0.93, 0.85, 0.91);
         }
 
+        .foux-toggle:before {
+            content: "";
+            position: absolute;
+            top: 0.25rem;
+            left: 0.3125rem;
+            display: block;
+            width: 1.875rem;
+            height: 1.875rem;
+            border-radius: 1.875rem;
+            background-color: white;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+            -webkit-transition: left 0.2s cubic-bezier(0.34, 0.93, 0.85, 0.91);
+            transition: left 0.2s cubic-bezier(0.34, 0.93, 0.85, 0.91);
+        }
+
+        .toggle:checked~.foux-toggle {
+            border-color: #3fd18d;
+            background-color: #3fd18d;
+        }
+
+        .toggle:checked~.foux-toggle:before {
+            left: 2.75rem;
+        }
+
+        .toggle--label:before,
+        .toggle--label:after {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            -webkit-transition: opacity 0.4s linear;
+            transition: opacity 0.4s linear;
+        }
+
+        .toggle--label {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            text-align: center;
+            line-height: 2.5rem;
+            cursor: pointer;
+            z-index: 10;
+            letter-spacing: 0.0625rem;
+        }
+
+        .toggle--label:before {
+            content: "On";
+            right: 40%;
+            left: 0;
+            color: white;
+            opacity: 0;
+        }
+
+        .toggle:checked+.toggle--label:before {
+            opacity: 1;
+        }
+
+        .toggle--label:after {
+            content: "Off";
+            position: absolute;
+            right: 0;
+            left: 40%;
+            opacity: 1;
+        }
+
+        .toggle:checked+.toggle--label:after {
+            opacity: 0;
+            -webkit-transition-duration: 0.05s;
+            transition-duration: 0.05s;
+        }
+
+        html {
+            background-color: #fbfbfb;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
-
-        <div class="box1"></div>
-        <div class="box2"></div>
-        
+    <div class="toggle-wrapper">
+        <!--checkbox 設定 checked可預設打勾 -->
+        <input id="provide-muffins" name="provide_muffins" class="toggle"  type="checkbox" checked />
+        <label for="provide-muffins" class="toggle--label"></label>
+        <div class="foux-toggle"></div>
     </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script>
+       
+        $("#provide-muffins").click(function () {
+             checkis = $(this).is(":checked");
+            // var checkis = $(this).val();
+            console.log(checkis);
+        });
+        // console.log(checkis);
+    </script>
 </body>
 
 </html>
