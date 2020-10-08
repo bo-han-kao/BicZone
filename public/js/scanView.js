@@ -36,7 +36,7 @@ $(document).ready(function () {
                 $(".btn").off("click").on("click", function (e) {
                     let _id = e.target.getAttribute("data-id");
                     console.log(_id);
-                    var devices={"uuid":_id}
+                    let devices={"uuid":_id}
 
 
                     $.ajax({

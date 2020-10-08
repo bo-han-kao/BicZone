@@ -44,105 +44,106 @@
 	height: 50px;
   }
   
-  .toggle-wrapper {
-	position: absolute;
-	top: 120%;
-	left: 30%;
-	-webkit-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
-	width: 5rem;
-	height: 2.5rem;
-	font-family: sans-serif;
-	font-size: 0.75rem;
-	font-weight: 100;
-}
-
-.toggle {
-	display: none;
-}
-
-.foux-toggle {
+/* --------------------------togglecss---------------------- */
+.toggle-btn {
+	overflow: hidden;
+	width: 80px;
+	height: 40px;
+	/* margin: 10px; */
+	border-radius: 50px;
+	display: inline-block;
 	position: relative;
-	width: 5rem;
-	height: 2.5rem;
-	border-radius: 2.5rem;
-	margin: 0;
-	border-width: 1px;
-	border-style: solid;
-	border-color: #e4e4e4;
-	background-color: #f7f7f7;
-	-webkit-transition: background-color 0.2s cubic-bezier(0.34, 0.93, 0.85, 0.91);
-	transition: background-color 0.2s cubic-bezier(0.34, 0.93, 0.85, 0.91);
-}
-
-.foux-toggle:before {
-	content: "";
-	position: absolute;
-	top: 0.25rem;
-	left: 0.3125rem;
-	display: block;
-	width: 1.875rem;
-	height: 1.875rem;
-	border-radius: 1.875rem;
-	background-color: white;
-	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-	-webkit-transition: left 0.2s cubic-bezier(0.34, 0.93, 0.85, 0.91);
-	transition: left 0.2s cubic-bezier(0.34, 0.93, 0.85, 0.91);
-}
-
-.toggle:checked~.foux-toggle {
-	border-color: #3fd18d;
-	background-color: #3fd18d;
-}
-
-.toggle:checked~.foux-toggle:before {
-	left: 2.75rem;
-}
-
-.toggle--label:before,
-.toggle--label:after {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	-webkit-transition: opacity 0.4s linear;
-	transition: opacity 0.4s linear;
-}
-
-.toggle--label {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	text-align: center;
-	line-height: 2.5rem;
+	background: no-repeat 50px center #e74c3c;
 	cursor: pointer;
-	z-index: 10;
-	letter-spacing: 0.0625rem;
+	-webkit-transition: background-color 0.4s ease-in-out;
+	-moz-transition: background-color 0.4s ease-in-out;
+	-o-transition: background-color 0.4s ease-in-out;
+	transition: background-color 0.4s ease-in-out;
+	cursor: pointer;
 }
 
-.toggle--label:before {
-	content: "On";
-	right: 40%;
-	left: 0;
-	color: white;
-	opacity: 0;
+
+.toggle-btn.active {
+	background:  no-repeat 10px center #2ecc71;
 }
 
-.toggle:checked+.toggle--label:before {
-	opacity: 1;
+.toggle-btn.active .round-btn {
+	left: 45px;
 }
 
-.toggle--label:after {
-	content: "Off";
+.toggle-btn .round-btn {
+	width: 30px;
+	height: 30px;
+	background-color: #fff;
+	border-radius: 50%;
+	display: inline-block;
 	position: absolute;
-	right: 0;
-	left: 40%;
-	opacity: 1;
+	left: 5px;
+	top: 50%;
+	margin-top: -15px;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
 }
 
-.toggle:checked+.toggle--label:after {
-	opacity: 0;
-	-webkit-transition-duration: 0.05s;
-	transition-duration: 0.05s;
+.toggle-btn .round-btn::before{
+	content: "off";
+	position: absolute;
+	top:2px;
+	left: 45px;
+	color: white;
 }
+
+.toggle-btn .round-btn::after{
+	content: "on";
+	position: absolute;
+	top:2px;
+	left: -35px;
+	color: white;
+}
+
+
+.toggle-btn .cb-value {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top:0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	z-index: 9;
+	cursor: pointer;
+	
+}
+
+.made-with-love {
+	position: fixed;
+	left: 0;
+	width: 100%;
+	bottom: 10px;
+	text-align: center;
+	font-size: 10px;
+	z-index: 9999;
+	font-family: arial;
+	color: #fff;
+}
+
+.made-with-love i {
+	font-style: normal;
+	color: #f50057;
+	font-size: 14px;
+	position: relative;
+	top: 2px;
+}
+
+.made-with-love a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.made-with-love a:hover {
+	text-decoration: underline;
+}
+/* --------------------------togglecss---------------------- */
