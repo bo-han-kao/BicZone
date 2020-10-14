@@ -15,11 +15,15 @@ $(document).ready(function () {
 					str += ' <img src="..." class="card-img" alt="...">'
 					str += ' </div>'
 					str += ' <div class="col-md-8">'
-					str += ' <div class="card-body"  style="height:180px">'
+					str += ' <div class="card-body" style="height:180px">'
 					str += '<h5 class="card-title">' + devicesdata[i].name + '</h5>'
 					str += '<div class="toggle-btn active">'
-					str += '<input id=' + devicesdata[i].device_id + ' data-id=' + devicesdata[i].device_id + ' type="checkbox" checked class="cb-value" />'
+					str += '<input  data-id=' + devicesdata[i].device_id + ' type="checkbox" checked class="cb-value" />'
 					str += '<span class="round-btn"></span>'
+					str += '</div>'
+					str += ' <div class="slidecontainer ">'
+					str += '<input type="range" min="0" max="100" value="0" class="sliderlight" id="myRange"  data-id=' + devicesdata[i].device_id + '>'
+					str += '<p>Value: <span class="demo" >0</span></p>'
 					str += '</div>'
 					str += '</div>'
 					str += '</div>'
@@ -28,7 +32,7 @@ $(document).ready(function () {
 					str += '</div>'
 				}
 				$('#listdevice').html(str);
-				// -------------------toggle------------------
+				// -------------------toggle-----------------------------------------
 				$('.cb-value').off("click").on("click", function (e) {
 					let mainParent = $(this).parent('.toggle-btn');
 					if ($(mainParent).find('input.cb-value').is(':checked')) {
@@ -38,32 +42,92 @@ $(document).ready(function () {
 					}
 
 					let _id = e.target.getAttribute("data-id");
-					let state = $('#' + _id).is(':checked');
+					let state = $(this).is(':checked');
+					console.log(state);
 					let device = {
 						"device_id": _id,
 						"state": {
 							"onOff": state
 						}
 					}
-					console.log(device);
-					
+					// console.log(device);
+
 					$.ajax({
-                        url: "http://127.0.0.1:5000/v1/device",
-                        data: JSON.stringify({ device: device }),
-                        type: "PATCH",
-                        dataType: "json",
-                        contentType: "application/json;charset=utf-8",
-                        success: function (returnData) {
-                            console.log(returnData);
-                        },
-                        error: function (xhr, ajaxOptions, thrownError) {
-                            console.log(xhr.status);
-                            console.log(thrownError);
-                        }
-                    })
+						url: "http://127.0.0.1:5000/v1/device",
+						data: JSON.stringify({ device: device }),
+						type: "PATCH",
+						dataType: "json",
+						contentType: "application/json;charset=utf-8",
+						success: function (returnData) {
+							console.log(returnData);
+						},
+						error: function (xhr, ajaxOptions, thrownError) {
+							console.log(xhr.status);
+							console.log(thrownError);
+						}
+					})
 				});
 
-				// -------------------toggle------------------
+				// -------------------toggle------------------------------------------
+				// ---------------inputRange--------------------------------------
+
+				$('.sliderlight').off("mouseenter").on('mouseenter', function (e) {
+					r = $(this);
+					var p = r.val();
+					r.on('click', function () {
+						p = r.val();
+						bg(p);
+					});
+					r.on('mousemove', function () {
+						p = r.val();
+						bg(p);
+					});
+
+					function bg(n) {
+						r.css({
+							'background-image': '-webkit-linear-gradient(left ,#f22 0%,#f22 ' + n + '%,#fff ' + n + '%, #fff 100%)'
+						});
+					}
+
+
+					r.off("input").on('input', function (e) {
+						let _id = e.target.getAttribute("data-id");
+						console.log(_id);
+						let a = $(this).val();
+						var viewval = $(this).parent().find('span');
+						viewval.html(a);
+						let lightval = Math.round((a * 655.34) - 32767);
+						console.log('lightval' + lightval)
+
+						let device = {
+							"device_id": _id,
+							"state": {
+								"level1": lightval
+							}
+						}
+						$.ajax({
+							url: "http://127.0.0.1:5000/v1/device",
+							data: JSON.stringify({ device: device }),
+							type: "PATCH",
+							dataType: "json",
+							contentType: "application/json;charset=utf-8",
+							success: function (returnData) {
+								console.log(returnData);
+							},
+							error: function (xhr, ajaxOptions, thrownError) {
+								console.log(xhr.status);
+								console.log(thrownError);
+							}
+						})
+					})
+
+				});
+
+
+
+
+
+				// ---------------inputRange--------------------------------------
 
 			},
 			"error": function (error) {

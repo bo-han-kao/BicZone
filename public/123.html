@@ -5,151 +5,149 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel=stylesheet type="text/css" href="../public/css/device.css">
     <style>
-        /* @import url(https://fonts.googleapis.com/css?family=Ubuntu); */
-
-        body {
-            /* text-align: center; */
-            /* padding: 10% 50px; */
-            /* background-color: #2c3e50; */
+        .sliderlight {
+            -webkit-appearance: none;
+            border-radius: 2px;
+            width: 200px;
+            height: 3px;
+            background-image: -webkit-linear-gradient(left, #f22 0%, #f22 0%, #fff 0%, #fff 100%);
+            box-shadow: inset #ebb 0 0 5px;
+            outline: none;
+            transition: .1s;
         }
 
-        input{
-            margin: 0px;
-            
-        }
-
-        .toggle-btn {
-            overflow: hidden;
-            width: 80px;
-            height: 40px;
-            margin: 10px;
-            border-radius: 50px;
-            display: inline-block;
-            position: relative;
-            background: no-repeat 50px center #e74c3c;
-            cursor: pointer;
-            -webkit-transition: background-color 0.4s ease-in-out;
-            -moz-transition: background-color 0.4s ease-in-out;
-            -o-transition: background-color 0.4s ease-in-out;
-            transition: background-color 0.4s ease-in-out;
-            cursor: pointer;
-        }
-     
-  
-        .toggle-btn.active {
-            background:  no-repeat 10px center #2ecc71;
-        }
-
-        .toggle-btn.active .round-btn {
-            left: 45px;
-        }
-
-        .toggle-btn .round-btn {
-            width: 30px;
-            height: 30px;
-            background-color: #fff;
+        .sliderlight::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 10px;
+            height: 10px;
+            background: #f22;
             border-radius: 50%;
-            display: inline-block;
-            position: absolute;
-            left: 5px;
-            top: 50%;
-            margin-top: -15px;
-            -webkit-transition: all 0.3s ease-in-out;
-            -moz-transition: all 0.3s ease-in-out;
-            -o-transition: all 0.3s ease-in-out;
-            transition: all 0.3s ease-in-out;
+            transition: .1s;
         }
 
-        .toggle-btn .round-btn::before{
-            content: "off";
-            position: absolute;
-            top:6px;
-            left: 45px;
-            color: white;
-        }
-
-        .toggle-btn .round-btn::after{
-            content: "on";
-            position: absolute;
-            top:6px;
-            left: -35px;
-            color: white;
-        }
-
-
-        .toggle-btn .cb-value {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top:0;
-            bottom: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            z-index: 9;
+        .sliderlight::-webkit-slider-thumb:hover,
+        .sliderlight::-webkit-slider-thumb:active {
+            width: 16px;
+            height: 16px;
             cursor: pointer;
-            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-        }
-
-        .made-with-love {
-            position: fixed;
-            left: 0;
-            width: 100%;
-            bottom: 10px;
-            text-align: center;
-            font-size: 10px;
-            z-index: 9999;
-            font-family: arial;
-            color: #fff;
-        }
-
-        .made-with-love i {
-            font-style: normal;
-            color: #f50057;
-            font-size: 14px;
-            position: relative;
-            top: 2px;
-        }
-
-        .made-with-love a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .made-with-love a:hover {
-            text-decoration: underline;
         }
     </style>
 </head>
 
 <body>
-    <h1>Jquery Toggle Button</h1>
-        <div class="toggle-btn active">
-            <input type="checkbox" checked class="cb-value" />
-            <span class="round-btn"></span>
+
+    <!-- <div class="slidecontainer ml-5">
+        <input type="range" min="0" max="100" value="0" class="sliderlight" id="myRange">
+        <p>Value: <span id="demo"></span></p>
+    </div> -->
+
+    <div id="listdevice" class="row row-cols-1 row-cols-md-3">
+
+        <div class="col mb-4">
+            <div class="card h-100">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="..." class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body" id="1">
+                            <h5 class="card-title">Card title</h5>
+                            <div class="toggle-btn active">
+                                <input type="checkbox" checked class="cb-value" />
+                                <span class="round-btn"></span>
+                            </div>
+                            <div class="slidecontainer ">
+                                <input type="range" min="0" max="100" value="0" class="sliderlight" id="myRange">
+                                <p>Value: <span class="demo" >0</span></p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <div class="col mb-4">
+            <div class="card h-100">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="..." class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body" id="2">
+                            <h5 class="card-title">Card title</h5>
+                            <div class="toggle-btn active">
+                                <input type="checkbox" checked class="cb-value" />
+                                <span class="round-btn"></span>
+                            </div>
+                            <div class="slidecontainer ">
+                                <input type="range" min="0" max="100" value="0" class="sliderlight" id="myRange">
+                                <p>Value: <span class="demo" ></span></p>
+                            </div>
 
-        <div class="toggle-btn">
-            <input type="checkbox" class="cb-value" />
-            <span class="round-btn"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <div class="col mb-4">
+            <div class="card h-100">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="..." class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                                additional content. This content is a little bit longer.</p>
 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <!-- <script src="../public/js/device.js"></script> -->
+    <script>
+    
+        $(function () {
+            var r = $('#1 .sliderlight');
+            r.on('mouseenter', function () {
+                var p = r.val();
+               
+                r.on('click', function () {
+                    p = r.val();
+                    bg(p);
+                });
+                r.on('mousemove', function () {
+                    p = r.val();
+                    bg(p);
+                });
 
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-        <script>
-            $('.cb-value').click(function () {
-                var mainParent = $(this).parent('.toggle-btn');
-                if ($(mainParent).find('input.cb-value').is(':checked')) {
-                    $(mainParent).addClass('active');
-                } else {
-                    $(mainParent).removeClass('active');
-                }
+                function bg(n) {
+                r.css({
+                    'background-image': '-webkit-linear-gradient(left ,#f22 0%,#f22 ' + n + '%,#fff ' + n + '%, #fff 100%)'
+                });
+            }
+            });
 
+            r.on('input', function () {
+                let a = $(this).val();
+                $('#1 .demo').html(a);
+                console.log(a);
+                let lightval = Math.round((a * 655.34) - 32767);
+                console.log('lightval' + lightval)
             })
-        </script>
+
+         
+        });
+    </script>
 </body>
 
 </html>
