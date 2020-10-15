@@ -5,6 +5,7 @@ $(document).ready(function () {
 			url: "http://127.0.0.1:5000/v1/device",
 			success: function (data) {
 				console.log(data.payload)
+				// console.log(state);
 				let devicesdata = data.payload.devices
 				let str = "";
 				for (let i = 0; i < devicesdata.length; i++) {
@@ -12,7 +13,7 @@ $(document).ready(function () {
 					str += ' <div class="card h-100">'
 					str += ' <div class="row no-gutters">'
 					str += ' <div class="col-md-4">'
-					str += ' <img src="..." class="card-img" alt="...">'
+					str += ' <img src="/images/bulb_PNG1251.png" class="card-img" alt="...">'
 					str += ' </div>'
 					str += ' <div class="col-md-8">'
 					str += ' <div class="card-body" style="height:180px">'
@@ -33,6 +34,7 @@ $(document).ready(function () {
 				}
 				$('#listdevice').html(str);
 				// -------------------toggle-----------------------------------------
+				
 				$('.cb-value').off("click").on("click", function (e) {
 					let mainParent = $(this).parent('.toggle-btn');
 					if ($(mainParent).find('input.cb-value').is(':checked')) {
@@ -43,14 +45,15 @@ $(document).ready(function () {
 
 					let _id = e.target.getAttribute("data-id");
 					let state = $(this).is(':checked');
-					console.log(state);
+				
+					// console.log(state);
 					let device = {
 						"device_id": _id,
 						"state": {
 							"onOff": state
 						}
 					}
-					// console.log(device);
+					
 
 					$.ajax({
 						url: "http://127.0.0.1:5000/v1/device",
@@ -95,6 +98,9 @@ $(document).ready(function () {
 						console.log(_id);
 						let a = $(this).val();
 						var viewval = $(this).parent().find('span');
+						var togglestate=$(this).parent().parent().find('.cd-value');
+						let state=togglestate.is(':checked');
+						console.log(state);
 						viewval.html(a);
 						let lightval = Math.round((a * 655.34) - 32767);
 						console.log('lightval' + lightval)
@@ -122,10 +128,6 @@ $(document).ready(function () {
 					})
 
 				});
-
-
-
-
 
 				// ---------------inputRange--------------------------------------
 
