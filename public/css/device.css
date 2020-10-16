@@ -53,7 +53,7 @@
 	border-radius: 50px;
 	display: inline-block;
 	position: relative;
-	background: no-repeat 50px center #e74c3c;
+	background: no-repeat 50px center #bababa;
 	cursor: pointer;
 	-webkit-transition: background-color 0.4s ease-in-out;
 	-moz-transition: background-color 0.4s ease-in-out;
@@ -174,3 +174,33 @@
 	height: 16px;
 	cursor: pointer; 
 }
+/* --------------------------inputRangecss---------------------- */
+/* --------------------------inputRangecolor---------------------- */
+.sliderlight_2 {
+	-webkit-appearance: none;
+	border-radius: 2px;
+	width: 100%;
+	height: 3px;
+	background-image: -webkit-linear-gradient(left, #f22 0%, #f22 0%, #fff 0%, #fff 100%);
+	box-shadow: inset #ebb 0 0 5px;
+	outline: none;
+	transition: .1s;
+}
+
+.sliderlight_2::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	width: 10px;
+	height: 10px;
+	background: #f22;
+	border-radius: 50%;
+	transition: .1s;
+}
+
+.sliderlight_2::-webkit-slider-thumb:hover,
+.sliderlight_2::-webkit-slider-thumb:active {
+	width: 16px;
+	height: 16px;
+	cursor: pointer; 
+}
+
+/* --------------------------inputRangecss---------------------- */

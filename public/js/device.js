@@ -12,11 +12,11 @@ $(document).ready(function () {
 					str += ' <div class="col mb-4">'
 					str += ' <div class="card h-100">'
 					str += ' <div class="row no-gutters">'
-					str += ' <div class="col-md-4">'
+					str += ' <div class="col-md-4 d-flex justify-content-center align-items-center">'
 					str += ' <img src="/images/bulb_PNG1251.png" class="card-img" alt="...">'
 					str += ' </div>'
 					str += ' <div class="col-md-8">'
-					str += ' <div class="card-body" style="height:180px">'
+					str += ' <div class="card-body" style="height:250px">'
 					str += '<h5 class="card-title">' + devicesdata[i].name + '</h5>'
 					str += '<div class="toggle-btn active">'
 					str += '<input  data-id=' + devicesdata[i].device_id + ' type="checkbox" checked class="cb-value" />'
@@ -26,6 +26,10 @@ $(document).ready(function () {
 					str += '<input type="range" min="0" max="100" value="0" class="sliderlight" id="myRange"  data-id=' + devicesdata[i].device_id + '>'
 					str += '<p>Value: <span class="demo" >0</span></p>'
 					str += '</div>'
+					str += ' <div class="slidecontainer_2">'
+					str += ' <input type="range" min="0" max="100" value="0" class="sliderlight_2" id="myRange_2" data-id=' + devicesdata[i].device_id + '>'
+					str += '<p>Value: <span class="demo_2">0</span></p>'
+					str += '</div>'
 					str += '</div>'
 					str += '</div>'
 					str += '</div>'
@@ -34,8 +38,8 @@ $(document).ready(function () {
 				}
 				$('#listdevice').html(str);
 				// -------------------toggle-----------------------------------------
-				
-				$('.cb-value').off("click").on("click", function (e) {
+
+				$('.cb-value').off("click").on("click", function bottonstate(e) {
 					let mainParent = $(this).parent('.toggle-btn');
 					if ($(mainParent).find('input.cb-value').is(':checked')) {
 						$(mainParent).addClass('active');
@@ -45,7 +49,7 @@ $(document).ready(function () {
 
 					let _id = e.target.getAttribute("data-id");
 					let state = $(this).is(':checked');
-				
+
 					// console.log(state);
 					let device = {
 						"device_id": _id,
@@ -53,7 +57,7 @@ $(document).ready(function () {
 							"onOff": state
 						}
 					}
-					
+
 
 					$.ajax({
 						url: "http://127.0.0.1:5000/v1/device",
@@ -69,10 +73,11 @@ $(document).ready(function () {
 							console.log(thrownError);
 						}
 					})
+
 				});
 
 				// -------------------toggle------------------------------------------
-				// ---------------inputRange--------------------------------------
+				// ---------------inputRangelight--------------------------------------
 
 				$('.sliderlight').off("mouseenter").on('mouseenter', function (e) {
 					r = $(this);
@@ -97,13 +102,13 @@ $(document).ready(function () {
 						let _id = e.target.getAttribute("data-id");
 						console.log(_id);
 						let a = $(this).val();
-						var viewval = $(this).parent().find('span');
-						var togglestate=$(this).parent().parent().find('.cd-value');
-						let state=togglestate.is(':checked');
+						var viewval = $(this).parent().find('.demo');
+						var togglestate = $(this).parent().parent().find('.cd-value');
+						let state = togglestate.is(':checked');
 						console.log(state);
 						viewval.html(a);
 						let lightval = Math.round((a * 655.34) - 32767);
-						console.log('lightval' + lightval)
+						console.log('lightval:' + lightval)
 
 						let device = {
 							"device_id": _id,
@@ -125,6 +130,66 @@ $(document).ready(function () {
 								console.log(thrownError);
 							}
 						})
+					})
+
+				});
+
+				// ---------------inputRange--------------------------------------
+
+				// ---------------inputRangecolor--------------------------------------
+
+				$('.sliderlight_2').off("mouseenter").on('mouseenter', function (e) {
+					r = $(this);
+					var p = r.val();
+					r.on('click', function () {
+						p = r.val();
+						bg(p);
+					});
+					r.on('mousemove', function () {
+						p = r.val();
+						bg(p);
+					});
+
+					function bg(n) {
+						r.css({
+							// 'background-image': '-webkit-linear-gradient(left ,#f22 0%,#f22 ' + n + '%,#fff ' + n + '%, #fff 100%)'
+							'background-image': '-webkit-linear-gradient(left ,rgba(255,239,0,1) 0%,rgba(30,217,255,1) ' + n + '%,#fff ' + n + '%, #fff 100%)'
+						});
+					}
+
+
+					r.off("input").on('input', function (e) {
+						let _id = e.target.getAttribute("data-id");
+						console.log(_id);
+						let a = $(this).val();
+						var viewval = $(this).parent().find('.demo_2');
+						var togglestate = $(this).parent().parent().find('.cd-value');
+						let state = togglestate.is(':checked');
+						console.log(state);
+						viewval.html(a);
+						let lightval = Math.round((a * 655.34) - 32767);
+						console.log('lightval' + lightval)
+
+						// let device = {
+						// 	"device_id": _id,
+						// 	"state": {
+						// 		"level1": lightval
+						// 	}
+						// }
+						// $.ajax({
+						// 	url: "http://127.0.0.1:5000/v1/device",
+						// 	data: JSON.stringify({ device: device }),
+						// 	type: "PATCH",
+						// 	dataType: "json",
+						// 	contentType: "application/json;charset=utf-8",
+						// 	success: function (returnData) {
+						// 		console.log(returnData);
+						// 	},
+						// 	error: function (xhr, ajaxOptions, thrownError) {
+						// 		console.log(xhr.status);
+						// 		console.log(thrownError);
+						// 	}
+						// })
 					})
 
 				});
