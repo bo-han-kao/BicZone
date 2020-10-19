@@ -7,7 +7,7 @@ router.use(express.urlencoded({
   extended: false
 }));
 
-
+router.use(express.static(__dirname + "/public"));
 
 router.use(express.json());
 // router.get('/', function(req, res, next) {

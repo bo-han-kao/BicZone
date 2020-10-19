@@ -36,7 +36,7 @@ $(document).ready(function () {
                 $(".btn").off("click").on("click", function (e) {
                     let _id = e.target.getAttribute("data-id");
                     console.log(_id);
-                    let devices={"uuid":_id}
+                    let devices = { "uuid": _id }
 
 
                     $.ajax({
@@ -44,7 +44,15 @@ $(document).ready(function () {
                         data: JSON.stringify({ devices: devices }),
                         type: "POST",
                         dataType: "json",
+                        async: true,
                         contentType: "application/json;charset=utf-8",
+                        beforeSend: function () {
+                            // Handle the beforeSend event
+                            $('.mask').show();;
+                        },
+                        complete: function () {
+                            $('.mask').hide();
+                        },
                         success: function (returnData) {
                             console.log(returnData);
                             alert("配對成功");
