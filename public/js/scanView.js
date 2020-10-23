@@ -44,7 +44,6 @@ $(document).ready(function () {
                         data: JSON.stringify({ devices: devices }),
                         type: "POST",
                         dataType: "json",
-                        async: true,
                         contentType: "application/json;charset=utf-8",
                         beforeSend: function () {
                             // Handle the beforeSend event
@@ -55,8 +54,10 @@ $(document).ready(function () {
                         },
                         success: function (returnData) {
                             console.log(returnData);
-                            alert("配對成功");
+                            // alert("配對成功");
+                            swal("配對成功", "按下按鈕繼續", "success")
                         },
+
                         error: function (xhr, ajaxOptions, thrownError) {
                             console.log(xhr.status);
                             console.log(thrownError);

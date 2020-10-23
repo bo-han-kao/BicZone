@@ -24,11 +24,11 @@ $(document).ready(function () {
 					str += '</div>'
 					str += ' <div class="slidecontainer ">'
 					str += '<input type="range" min="0" max="100" value="0" class="sliderlight" id="myRange"  data-id=' + devicesdata[i].device_id + '>'
-					str += '<p>Value: <span class="demo" >0</span></p>'
+					str += '<p>亮度: <span class="demo" >0</span></p>'
 					str += '</div>'
 					str += ' <div class="slidecontainer_2">'
 					str += ' <input type="range" min="0" max="100" value="0" class="sliderlight_2" id="myRange_2" data-id=' + devicesdata[i].device_id + '>'
-					str += '<p>Value: <span class="demo_2">0</span></p>'
+					str += '<p>色溫: <span class="demo_2">0</span></p>'
 					str += '</div>'
 					str += '</div>'
 					str += '</div>'
@@ -79,7 +79,7 @@ $(document).ready(function () {
 				// -------------------toggle------------------------------------------
 				// ---------------inputRangelight--------------------------------------
 
-				$('.sliderlight').off("mouseenter").on('mouseenter', function (e) {
+				$('.sliderlight').off('mouseenter').on('mouseenter', function (e) {
 					r = $(this);
 					var p = r.val();
 					r.on('click', function () {
@@ -170,26 +170,26 @@ $(document).ready(function () {
 						let lightval = Math.round((a * 655.34) - 32767);
 						console.log('lightval' + lightval)
 
-						// let device = {
-						// 	"device_id": _id,
-						// 	"state": {
-						// 		"level1": lightval
-						// 	}
-						// }
-						// $.ajax({
-						// 	url: "http://127.0.0.1:5000/v1/device",
-						// 	data: JSON.stringify({ device: device }),
-						// 	type: "PATCH",
-						// 	dataType: "json",
-						// 	contentType: "application/json;charset=utf-8",
-						// 	success: function (returnData) {
-						// 		console.log(returnData);
-						// 	},
-						// 	error: function (xhr, ajaxOptions, thrownError) {
-						// 		console.log(xhr.status);
-						// 		console.log(thrownError);
-						// 	}
-						// })
+						let device = {
+							"device_id": _id,
+							"state": {
+								"level2": lightval
+							}
+						}
+						$.ajax({
+							url: "http://127.0.0.1:5000/v1/device",
+							data: JSON.stringify({ device: device }),
+							type: "PATCH",
+							dataType: "json",
+							contentType: "application/json;charset=utf-8",
+							success: function (returnData) {
+								console.log(returnData);
+							},
+							error: function (xhr, ajaxOptions, thrownError) {
+								console.log(xhr.status);
+								console.log(thrownError);
+							}
+						})
 					})
 
 				});
