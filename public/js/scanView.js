@@ -47,7 +47,7 @@ $(document).ready(function () {
                         contentType: "application/json;charset=utf-8",
                         beforeSend: function () {
                             // Handle the beforeSend event
-                            $('.mask').show();;
+                            $('.mask').show();
                         },
                         complete: function () {
                             $('.mask').hide();
