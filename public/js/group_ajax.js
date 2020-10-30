@@ -18,7 +18,6 @@ $(document).ready(function () {
     }
 
     function listgroup() {
-        // console.log(groupMsg[1].group.group_id);
         let str = "";
         for (let i = 0; i < groupMsg.length; i++) {
             str += '<ul class="nav radio" id="' + groupMsg[i].group.group_id + '">'
@@ -28,7 +27,6 @@ $(document).ready(function () {
         $('.addul').html(str);
 
         $(".radio i").on("click", function () {
-
             $(".radio i").removeClass("radioactive");
             $(this).addClass("radioactive");
             let youclickid = $(this).parent().parent().attr("id");
@@ -135,9 +133,48 @@ $(document).ready(function () {
         }).catch(swal.noop)
     })
 
+    $('.onoffnav i').on('click', function () {
+        let getid = $('.addul').find('.radioactive').parent().parent().attr("id");
+        // console.log(getid);
+        let onoff = $(this).attr('class');
+        let onoffstate;
+        if (onoff == 'onoffnavactive') {
+            $(this).removeClass("onoffnavactive");
+            console.log('off:' + getid);
+            onoffstate = 0;
+
+        } else {
+            $(this).addClass("onoffnavactive");
+            console.log('on:' + getid);
+            onoffstate = 1;
+        }
 
 
 
+        let group = {
+                "group_id": getid,
+                "state": {
+                  "onOff": onoffstate
+                }
+        }
 
+
+        $.ajax({
+            url: "http://127.0.0.1:5000/v1/group",
+            data: JSON.stringify({ group: group }),
+            type: "PATCH",
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+
+            success: function (returnData) {
+                console.log(returnData);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr.status);
+                console.log(thrownError);
+            }
+        })
+
+    })
 
 })
