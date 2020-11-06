@@ -19,12 +19,24 @@ $(document).ready(function () {
 
     function listgroup() {
         let str = "";
+
+
+        str += '<ul class="nav">'
+        str += '<li><i class="clicki far fa-object-group fa-lg"></i></li>'
+        str += '</ul>'
+
         for (let i = 0; i < groupMsg.length; i++) {
-            str += '<ul class="nav radio" id="' + groupMsg[i].group.group_id + '">'
-            str += '<li><i  class="">' + groupMsg[i].group.name + '</i></li>'
+            str += '<ul class="nav radio " id="' +groupMsg[i].group.group_id + '">'
+            str += '<li><i  class="">'+groupMsg[i].group.name+'</i></li>'
             str += '</ul>'
         }
-        $('.addul').html(str);
+
+        // for (let i = 0; i < 20; i++) {
+        //     str += '<ul class="nav radio " id="' + i + '">'
+        //     str += '<li><i  class="">' + i + '</i></li>'
+        //     str += '</ul>'
+        // }
+        $('.navcss').html(str);
 
         $(".radio i").on("click", function () {
             $(".radio i").removeClass("radioactive");
@@ -152,10 +164,10 @@ $(document).ready(function () {
 
 
         let group = {
-                "group_id": getid,
-                "state": {
-                  "onOff": onoffstate
-                }
+            "group_id": getid,
+            "state": {
+                "onOff": onoffstate
+            }
         }
 
 
@@ -176,5 +188,140 @@ $(document).ready(function () {
         })
 
     })
+
+
+
+    // ---------------inputRangelight--------------------------------------
+
+    $('.sliderlight').off('mouseenter').on('mouseenter', function (e) {
+        r = $(this);
+        var p = r.val();
+        r.on('click', function () {
+            p = r.val();
+            bg(p);
+        });
+        r.on('mousemove', function () {
+            p = r.val();
+            bg(p);
+        });
+
+        function bg(n) {
+            r.css({
+                'background-image': '-webkit-linear-gradient(left ,#f22 0%,#f22 ' + n + '%,#fff ' + n + '%, #fff 100%)'
+            });
+        }
+
+        r.off("input").on('input', function (e) {
+            // input數值
+            let a = $(this).val();
+            // 傳到後端的數值轉換
+            let lightval = Math.round((a * 655.34) - 32767);
+            // 取得現在選到的群
+            let getid = $('.addul').find('.radioactive').parent().parent().attr("id");
+            // 指定顯示數值的地方
+            let viewval = $('#demo');
+
+            viewval.html(a)
+
+            console.log('亮度條:' + lightval + '   getid:' + getid)
+                ;
+
+            let group = {
+                "group_id": getid,
+                "state": {
+                    "level1": lightval
+                }
+            }
+
+            $.ajax({
+                url: "http://127.0.0.1:5000/v1/group",
+                data: JSON.stringify({ group: group }),
+                type: "PATCH",
+                dataType: "json",
+                contentType: "application/json;charset=utf-8",
+
+                success: function (returnData) {
+                    console.log(returnData);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status);
+                    console.log(thrownError);
+                }
+            })
+        })
+
+
+
+    });
+
+    // ---------------inputRange--------------------------------------
+
+
+    // ---------------inputRangecolor--------------------------------------
+
+    $('.sliderlight_2').off("mouseenter").on('mouseenter', function (e) {
+        r = $(this);
+        var p = r.val();
+        r.on('click', function () {
+            p = r.val();
+            bg(p);
+        });
+        r.on('mousemove', function () {
+            p = r.val();
+            bg(p);
+        });
+
+        function bg(n) {
+            r.css({
+                // 'background-image': '-webkit-linear-gradient(left ,#f22 0%,#f22 ' + n + '%,#fff ' + n + '%, #fff 100%)'
+                'background-image': '-webkit-linear-gradient(left ,rgba(255,239,0,1) 0%,rgba(30,217,255,1) ' + n + '%,#fff ' + n + '%, #fff 100%)'
+            });
+        }
+
+
+        r.off("input").on('input', function (e) {
+            // input數值
+            let a = $(this).val();
+            // 傳到後端的數值轉換
+            let lightval = Math.round((a * 655.34) - 32767);
+            // 取得現在選到的群
+            let getid = $('.addul').find('.radioactive').parent().parent().attr("id");
+            // 指定顯示數值的地方
+            let viewval = $('#demo_2');
+
+            console.log('色溫條:' + lightval + '   getid:' + getid)
+
+            viewval.html(a);
+
+
+            let group = {
+                "group_id": getid,
+                "state": {
+                    "level2": lightval
+                }
+            }
+
+
+            $.ajax({
+                url: "http://127.0.0.1:5000/v1/group",
+                data: JSON.stringify({ group: group }),
+                type: "PATCH",
+                dataType: "json",
+                contentType: "application/json;charset=utf-8",
+
+                success: function (returnData) {
+                    console.log(returnData);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status);
+                    console.log(thrownError);
+                }
+            })
+
+        })
+
+    });
+
+    // ---------------inputRangecolor--------------------------------------
 
 })

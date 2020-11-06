@@ -18,7 +18,7 @@ $(document).ready(function () {
 					str += ' <div class="col-md-8">'
 					str += ' <div class="card-body" style="height:250px">'
 					str += '<h5 class="card-title">' + devicesdata[i].name + '</h5>'
-					str += '<div class="toggle-btn active">'
+					str += '<div class="toggle-btn toggle-btnd active">'
 					str += '<input  data-id=' + devicesdata[i].device_id + ' type="checkbox" checked class="cb-value" />'
 					str += '<span class="round-btn"></span>'
 					str += '</div>'
@@ -77,8 +77,8 @@ $(document).ready(function () {
 				});
 
 				// -------------------toggle------------------------------------------
+				
 				// ---------------inputRangelight--------------------------------------
-
 				$('.sliderlight').off('mouseenter').on('mouseenter', function (e) {
 					r = $(this);
 					var p = r.val();
@@ -194,7 +194,7 @@ $(document).ready(function () {
 
 				});
 
-				// ---------------inputRange--------------------------------------
+				// ---------------inputRangecolor--------------------------------------
 
 			},
 			"error": function (error) {

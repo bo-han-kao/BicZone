@@ -45,7 +45,7 @@
   }
   
 /* --------------------------togglecss---------------------- */
-.toggle-btn {
+.toggle-btnd {
 	overflow: hidden;
 	width: 80px;
 	height: 40px;
@@ -203,4 +203,4 @@
 	cursor: pointer; 
 }
 
-/* --------------------------inputRangecss---------------------- */
+/* --------------------------inputRangecolor---------------------- */

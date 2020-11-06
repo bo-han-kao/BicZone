@@ -1,12 +1,25 @@
 ul{
   padding-inline-start: 0px;
+  margin: 0px;
 }
 
+p{
+  margin: 0px;
+}
+
+.nav{
+  display: block;
+}
 
 .groupView{
   height: 50%;
   width: 100%;
 }
+
+/* .navcss::after{
+  content: '';
+  flex: center;
+} */
 
   .nav li {
     position: relative;
@@ -28,7 +41,7 @@ ul{
     z-index: 2;
     text-align: center;
     line-height: 100px;
-    border-radius: 50%;
+    border-radius: 10%;
     box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff;
   }
 
@@ -45,12 +58,12 @@ ul{
     background: #fff;
     border-top: 2px solid #ddd;
     position: absolute;
-    top: 17px;
-    left: 17px;
-    bottom: 17px;
-    right: 17px;
+    top: 25px;
+    left: 25px;
+    bottom: 25px;
+    right: 25px;
     z-index: 1;
-    border-radius: 50%;
+    border-radius: 10%;
     box-shadow: inset 0px 8px 48px #ddd;
   }
 
@@ -113,10 +126,10 @@ ul{
    background: #fff;
    border-top: 2px solid #ddd;
    position: absolute;
-   top: 20px;
-   left: 20px;
-   bottom:20px;
-   right: 20px;
+   top: 25px;
+   left: 25px;
+   bottom:25px;
+   right: 25px;
    z-index: 1;
    border-radius: 50%;
   box-shadow: inset 0px 8px 48px #ddd;
@@ -136,5 +149,73 @@ ul{
 .onoffnavactive{
   box-shadow: 0px 3px 4px #aaa inset, 0px 2px 3px #fff !important;
   background: #1B813E  !important;
- 
 }
+
+.onoffnav i:active {
+  box-shadow: 0px 3px 4px #aaa inset, 0px 2px 3px #fff;
+}
+
+
+
+
+
+/* --------------------------inputRangecss---------------------- */
+.sliderlight {
+	-webkit-appearance: none;
+	border-radius: 10px;
+	width: 132px;
+	height: 15px;
+	background-image: -webkit-linear-gradient(left, #f22 0%, #f22 0%, #fff 0%, #fff 100%);
+	box-shadow: inset #ebb 0 0 30px;
+	outline: none;
+	transition: .1s;
+}
+
+.sliderlight::-webkit-slider-thumb {
+  position: relative;
+	-webkit-appearance: none;
+	width: 17px;
+	height: 17px;
+	background: #f22;
+	border-radius: 50%;
+  transition: .1s;
+}
+
+.sliderlight::-webkit-slider-thumb:hover,
+.sliderlight::-webkit-slider-thumb:active {
+	width: 25px;
+	height: 25px;
+	cursor: pointer; 
+}
+
+/* --------------------------inputRangecss---------------------- */
+
+/* --------------------------inputRangecolor---------------------- */
+.sliderlight_2 {
+	-webkit-appearance: none;
+	border-radius: 10px;
+	width: 132px;
+	height: 15px;
+	background-image: -webkit-linear-gradient(left, #f22 0%, #f22 0%, #fff 0%, #fff 100%);
+  box-shadow: inset #ebb 0 0 30px;
+	outline: none;
+	transition: .1s;
+}
+
+.sliderlight_2::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	width: 17px;
+	height: 17px;
+	background: #f22;
+	border-radius: 50%;
+	transition: .1s;
+}
+
+.sliderlight_2::-webkit-slider-thumb:hover,
+.sliderlight_2::-webkit-slider-thumb:active {
+	width: 25px;
+	height: 25px;
+	cursor: pointer; 
+}
+
+/* --------------------------inputRangecolor---------------------- */
