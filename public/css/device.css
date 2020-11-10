@@ -43,6 +43,19 @@
 	padding: 15px;
 	height: 50px;
   }
+
+  .tabgride{
+	  display: grid;
+	  grid-template-columns: repeat(auto-fill, 210px);
+	  width: 100%;
+	  justify-content: space-around;
+  }
+
+  .cardbox{
+	  width: 200px;
+	  height: 250px;
+	  margin-bottom: 20px;
+  }
   
 /* --------------------------togglecss---------------------- */
 .toggle-btnd {

@@ -19,23 +19,21 @@ $(document).ready(function () {
 
     function listgroup() {
         let str = "";
-
-
         str += '<ul class="nav">'
         str += '<li><i class="clicki far fa-object-group fa-lg"></i></li>'
         str += '</ul>'
 
-        for (let i = 0; i < groupMsg.length; i++) {
-            str += '<ul class="nav radio " id="' +groupMsg[i].group.group_id + '">'
-            str += '<li><i  class="">'+groupMsg[i].group.name+'</i></li>'
-            str += '</ul>'
-        }
-
-        // for (let i = 0; i < 20; i++) {
-        //     str += '<ul class="nav radio " id="' + i + '">'
-        //     str += '<li><i  class="">' + i + '</i></li>'
+        // for (let i = 0; i < groupMsg.length; i++) {
+        //     str += '<ul class="nav radio " id="' +groupMsg[i].group.group_id + '">'
+        //     str += '<li><i  class="">'+groupMsg[i].group.name+'</i></li>'
         //     str += '</ul>'
         // }
+
+        for (let i = 0; i < 20; i++) {
+            str += '<ul class="nav radio " id="' + i + '">'
+            str += '<li><i  class="">' + i + '</i></li>'
+            str += '</ul>'
+        }
         $('.navcss').html(str);
 
         $(".radio i").on("click", function () {
@@ -146,7 +144,7 @@ $(document).ready(function () {
     })
 
     $('.onoffnav i').on('click', function () {
-        let getid = $('.addul').find('.radioactive').parent().parent().attr("id");
+        let getid = $('.navcss').find('.radioactive').parent().parent().attr('id');
         // console.log(getid);
         let onoff = $(this).attr('class');
         let onoffstate;
@@ -217,13 +215,15 @@ $(document).ready(function () {
             // 傳到後端的數值轉換
             let lightval = Math.round((a * 655.34) - 32767);
             // 取得現在選到的群
-            let getid = $('.addul').find('.radioactive').parent().parent().attr("id");
+            let getid = $('.navcss').find('.radioactive').parent().parent().attr('id');
             // 指定顯示數值的地方
             let viewval = $('#demo');
 
+            console.log('hihi'+getid)
+
             viewval.html(a)
 
-            console.log('亮度條:' + lightval + '   getid:' + getid)
+            // console.log('亮度條:' + lightval + '   getid:' + getid)
                 ;
 
             let group = {
@@ -285,7 +285,7 @@ $(document).ready(function () {
             // 傳到後端的數值轉換
             let lightval = Math.round((a * 655.34) - 32767);
             // 取得現在選到的群
-            let getid = $('.addul').find('.radioactive').parent().parent().attr("id");
+            let getid = $('.navcss').find('.radioactive').parent().parent().attr('id');
             // 指定顯示數值的地方
             let viewval = $('#demo_2');
 

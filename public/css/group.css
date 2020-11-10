@@ -12,8 +12,14 @@ p{
 }
 
 .groupView{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 150px);
   height: 50%;
   width: 100%;
+  justify-content: space-around;
+  overflow:scroll;
+  overflow-x:hidden;
+  overflow-y:auto;
 }
 
 /* .navcss::after{
