@@ -13,9 +13,8 @@ $(document).ready(function () {
         groupMsg = JSON.parse(localStorage.getItem("groupMsg"));
     }
 
-    if (groupMsg.length > 0) {
-        listgroup();
-    }
+    listgroup();
+
 
     function listgroup() {
         let str = "";
@@ -29,9 +28,9 @@ $(document).ready(function () {
         //     str += '</ul>'
         // }
 
-        for (let i = 0; i < 20; i++) {
-            str += '<ul class="nav radio " id="' + i + '">'
-            str += '<li><i  class="">' + i + '</i></li>'
+        for (let i = 0; i < groupMsg.length; i++) {
+            str += '<ul class="nav radio " id="' + groupMsg[i].group.group_id + '">'
+            str += '<li><i  class="">' + groupMsg[i].group.name + '</i></li>'
             str += '</ul>'
         }
         $('.navcss').html(str);

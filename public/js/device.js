@@ -38,26 +38,26 @@ $(document).ready(function () {
 				// }
 
 
-					for (let i = 0; i < 10; i++) {
+					for (let i = 0; i <devicesdata.length; i++) {
 					str += ' <div class="cardbox">'
 					str += ' <div class="card">'
 					str += ' <div class="row no-gutters">'
-					str += ' <div class="col-md-4 d-flex justify-content-center align-items-center">'
+					str += ' <div class="col-5 d-flex justify-content-center align-items-center img-rwd">'
 					str += ' <img src="/images/bulb_PNG1251.png" class="card-img" alt="...">'
 					str += ' </div>'
-					str += ' <div class="col-md-8">'
+					str += ' <div class="col-7">'
 					str += ' <div class="card-body" style="height:250px">'
-					str += '<h5 class="card-title">' + i + '</h5>'
+					str += '<h5 class="card-title">' +  devicesdata[i].name + '</h5>'
 					str += '<div class="toggle-btn toggle-btnd active">'
-					str += '<input  data-id=' + i + ' type="checkbox" checked class="cb-value" />'
+					str += '<input  data-id=' +  devicesdata[i].device_id + ' type="checkbox" checked class="cb-value" />'
 					str += '<span class="round-btn"></span>'
 					str += '</div>'
 					str += ' <div class="slidecontainer ">'
-					str += '<input type="range" min="0" max="100" value="0" class="sliderlight" id="myRange"  data-id=' + i + '>'
+					str += '<input type="range" min="0" max="100" value="0" class="sliderlight" id="myRange"  data-id=' + devicesdata[i].device_id  + '>'
 					str += '<p>亮度: <span class="demo" >0</span></p>'
 					str += '</div>'
 					str += ' <div class="slidecontainer_2">'
-					str += ' <input type="range" min="0" max="100" value="0" class="sliderlight_2" id="myRange_2" data-id=' + i + '>'
+					str += ' <input type="range" min="0" max="100" value="0" class="sliderlight_2" id="myRange_2" data-id=' + devicesdata[i].device_id + '>'
 					str += '<p>色溫: <span class="demo_2">0</span></p>'
 					str += '</div>'
 					str += '</div>'

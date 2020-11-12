@@ -18,18 +18,18 @@
 	border: 1px solid #000000;
 	height: 25px;
 	line-height: 25px;
-	background: #1D23AC;
+	background: #23282e;
 	padding: 0 15px;
 	list-style: none;
 	box-sizing: border-box;
   }
   #tab-demo > ul > li a {
-	color: #000;
+	color: white;
 	text-decoration: none;
   }
   #tab-demo > ul > li.active {
-	border-bottom: 1px solid #010CFE;
-	background: #010CFE;
+	border-bottom: 1px solid #4f5b69;
+	background: #4f5b69;
   }
   #tab-demo > .tab-inner {
 	clear: both;
@@ -42,20 +42,25 @@
   .tab-inner {
 	padding: 15px;
 	height: 50px;
+	 overflow:scroll;
+      overflow-x:hidden;
+      overflow-y:auto;
   }
 
   .tabgride{
 	  display: grid;
-	  grid-template-columns: repeat(auto-fill, 210px);
+	  grid-template-columns: repeat(auto-fill, 272px);
 	  width: 100%;
 	  justify-content: space-around;
+	 
   }
 
   .cardbox{
-	  width: 200px;
+	  width: 275px;
 	  height: 250px;
 	  margin-bottom: 20px;
   }
+
   
 /* --------------------------togglecss---------------------- */
 .toggle-btnd {
