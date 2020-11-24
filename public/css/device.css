@@ -55,6 +55,13 @@
 	 
   }
 
+  .card-head img{
+	  margin-left: 2px;
+	  height: 24px;
+	  width: 24px;
+	  cursor: pointer;
+  }
+
   .cardbox{
 	  width: 275px;
 	  height: 250px;

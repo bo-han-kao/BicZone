@@ -118,8 +118,7 @@ $(document).ready(function () {
                         // })
                     },
                     success: function (returnData) {
-                        console.log(returnData);
-
+                        console.log(returnData); 
                         let SavegroupID = returnData.payload;
                         groupMsg.push(SavegroupID);
                         localStorage.setItem('groupMsg', JSON.stringify(groupMsg));
@@ -135,8 +134,6 @@ $(document).ready(function () {
                         console.log(thrownError);
                     }
                 })
-
-
             }
 
         }).catch(swal.noop)

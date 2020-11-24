@@ -38,26 +38,35 @@ $(document).ready(function () {
 				// }
 
 
-					for (let i = 0; i <devicesdata.length; i++) {
+				for (let i = 0; i < devicesdata.length; i++) {
 					str += ' <div class="cardbox">'
-					str += ' <div class="card">'
+					str += ' <div class="card" id=' + devicesdata[i].device_id + '>'
 					str += ' <div class="row no-gutters">'
 					str += ' <div class="col-5 d-flex justify-content-center align-items-center img-rwd">'
 					str += ' <img src="/images/bulb_PNG1251.png" class="card-img" alt="...">'
 					str += ' </div>'
 					str += ' <div class="col-7">'
 					str += ' <div class="card-body" style="height:250px">'
-					str += '<h5 class="card-title">' +  devicesdata[i].name + '</h5>'
+
+					str += '<div class="d-flex card-head justify-content-around">'
+
+					str += '<h5 class="card-title">' + devicesdata[i].name + '</h5>'
+					str += '<div >'
+					str += '<img class="setting" src="/images/Notes.png" alt="">'
+					str += '<img class="delet" src="/images/Close.png" alt="">'
+					str += '</div>'
+					str += '</div>'
+
 					str += '<div class="toggle-btn toggle-btnd active">'
-					str += '<input  data-id=' +  devicesdata[i].device_id + ' type="checkbox" checked class="cb-value" />'
+					str += '<input   type="checkbox" checked class="cb-value" />'
 					str += '<span class="round-btn"></span>'
 					str += '</div>'
 					str += ' <div class="slidecontainer ">'
-					str += '<input type="range" min="0" max="100" value="0" class="sliderlight" id="myRange"  data-id=' + devicesdata[i].device_id  + '>'
+					str += '<input type="range" min="0" max="100" value="0" class="sliderlight" id="myRange" >'
 					str += '<p>亮度: <span class="demo" >0</span></p>'
 					str += '</div>'
 					str += ' <div class="slidecontainer_2">'
-					str += ' <input type="range" min="0" max="100" value="0" class="sliderlight_2" id="myRange_2" data-id=' + devicesdata[i].device_id + '>'
+					str += ' <input type="range" min="0" max="100" value="0" class="sliderlight_2" id="myRange_2">'
 					str += '<p>色溫: <span class="demo_2">0</span></p>'
 					str += '</div>'
 					str += '</div>'
@@ -67,6 +76,48 @@ $(document).ready(function () {
 					str += '</div>'
 				}
 				$('#listdevice').html(str);
+
+				// -------------------delet-----------------------------------------
+				$('.delet').off("click").on("click", function (e) {
+					let delet_id = $(this).parent().parent().parent().parent().parent().parent().attr('id');
+					console.log(delet_id);
+					let devices = {
+						"device_id": delet_id,
+					}
+
+					swal({
+						title: '確定要解除配置嗎？',
+						type: 'warning',
+						showCancelButton: true,
+						confirmButtonColor: '#3085d6',
+						cancelButtonColor: '#d33',
+						confirmButtonText: '確定解除！',
+					}).then(function () {
+						$.ajax({
+							url: "http://127.0.0.1:5000/v1/device",
+							data: JSON.stringify({ devices: devices }),
+							type: "DELETE",
+							dataType: "json",
+							contentType: "application/json;charset=utf-8",
+							success: function (returnData) {
+								console.log(returnData);
+								swal(
+									'删除！',
+									'你的裝置已被删除。',
+									'success'
+								);
+							},
+							error: function (xhr, ajaxOptions, thrownError) {
+								console.log(xhr.status);
+								console.log(thrownError);
+							}
+						})
+					})
+				})
+
+
+				// -------------------delet-----------------------------------------
+
 				// -------------------toggle-----------------------------------------
 
 				$('.cb-value').off("click").on("click", function bottonstate(e) {
@@ -77,7 +128,8 @@ $(document).ready(function () {
 						$(mainParent).removeClass('active');
 					}
 
-					let _id = e.target.getAttribute("data-id");
+
+					let _id = $(this).parent().parent().parent().parent().parent().attr("id");
 					let state = $(this).is(':checked');
 
 					// console.log(state);
@@ -107,7 +159,7 @@ $(document).ready(function () {
 				});
 
 				// -------------------toggle------------------------------------------
-				
+
 				// ---------------inputRangelight--------------------------------------
 				$('.sliderlight').off('mouseenter').on('mouseenter', function (e) {
 					r = $(this);
@@ -129,16 +181,14 @@ $(document).ready(function () {
 
 
 					r.off("input").on('input', function (e) {
-						let _id = e.target.getAttribute("data-id");
-						console.log(_id);
+						let _id = $(this).parent().parent().parent().parent().parent().attr("id");
 						let a = $(this).val();
 						var viewval = $(this).parent().find('.demo');
 						var togglestate = $(this).parent().parent().find('.cd-value');
 						let state = togglestate.is(':checked');
-						console.log(state);
 						viewval.html(a);
 						let lightval = Math.round((a * 655.34) - 32767);
-						console.log('lightval:' + lightval)
+						console.log('lightval:' + lightval + ' state:' + state + ' id:' + _id)
 
 						let device = {
 							"device_id": _id,
@@ -189,17 +239,14 @@ $(document).ready(function () {
 
 
 					r.off("input").on('input', function (e) {
-						let _id = e.target.getAttribute("data-id");
-						console.log(_id);
+						let _id = $(this).parent().parent().parent().parent().parent().attr("id");
 						let a = $(this).val();
 						var viewval = $(this).parent().find('.demo_2');
 						var togglestate = $(this).parent().parent().find('.cd-value');
 						let state = togglestate.is(':checked');
-						console.log(state);
 						viewval.html(a);
 						let lightval = Math.round((a * 655.34) - 32767);
-						console.log('lightval' + lightval)
-
+						console.log('lightval:' + lightval + ' state:' + state + ' id:' + _id)
 						let device = {
 							"device_id": _id,
 							"state": {
