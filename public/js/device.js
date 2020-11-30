@@ -1,6 +1,8 @@
 $(document).ready(function () {
 
-	var countInterval = setInterval(function interval() {
+	listdevice();
+
+	function listdevice() {
 		$.ajax({
 			url: "http://127.0.0.1:5000/v1/device",
 			success: function (data) {
@@ -8,36 +10,6 @@ $(document).ready(function () {
 				// console.log(state);
 				let devicesdata = data.payload.devices
 				let str = "";
-				// for (let i = 0; i < devicesdata.length; i++) {
-				// 	str += ' <div class="col mb-4">'
-				// 	str += ' <div class="card h-100">'
-				// 	str += ' <div class="row no-gutters">'
-				// 	str += ' <div class="col-md-4 d-flex justify-content-center align-items-center">'
-				// 	str += ' <img src="/images/bulb_PNG1251.png" class="card-img" alt="...">'
-				// 	str += ' </div>'
-				// 	str += ' <div class="col-md-8">'
-				// 	str += ' <div class="card-body" style="height:250px">'
-				// 	str += '<h5 class="card-title">' + devicesdata[i].name + '</h5>'
-				// 	str += '<div class="toggle-btn toggle-btnd active">'
-				// 	str += '<input  data-id=' + devicesdata[i].device_id + ' type="checkbox" checked class="cb-value" />'
-				// 	str += '<span class="round-btn"></span>'
-				// 	str += '</div>'
-				// 	str += ' <div class="slidecontainer ">'
-				// 	str += '<input type="range" min="0" max="100" value="0" class="sliderlight" id="myRange"  data-id=' + devicesdata[i].device_id + '>'
-				// 	str += '<p>亮度: <span class="demo" >0</span></p>'
-				// 	str += '</div>'
-				// 	str += ' <div class="slidecontainer_2">'
-				// 	str += ' <input type="range" min="0" max="100" value="0" class="sliderlight_2" id="myRange_2" data-id=' + devicesdata[i].device_id + '>'
-				// 	str += '<p>色溫: <span class="demo_2">0</span></p>'
-				// 	str += '</div>'
-				// 	str += '</div>'
-				// 	str += '</div>'
-				// 	str += '</div>'
-				// 	str += '</div>'
-				// 	str += '</div>'
-				// }
-
-
 				for (let i = 0; i < devicesdata.length; i++) {
 					str += ' <div class="cardbox">'
 					str += ' <div class="card" id=' + devicesdata[i].device_id + '>'
@@ -47,16 +19,13 @@ $(document).ready(function () {
 					str += ' </div>'
 					str += ' <div class="col-7">'
 					str += ' <div class="card-body" style="height:250px">'
-
 					str += '<div class="d-flex card-head justify-content-around">'
-
 					str += '<h5 class="card-title">' + devicesdata[i].name + '</h5>'
 					str += '<div >'
 					str += '<img class="setting" src="/images/Notes.png" alt="">'
 					str += '<img class="delet" src="/images/Close.png" alt="">'
 					str += '</div>'
 					str += '</div>'
-
 					str += '<div class="toggle-btn toggle-btnd active">'
 					str += '<input   type="checkbox" checked class="cb-value" />'
 					str += '<span class="round-btn"></span>'
@@ -106,6 +75,7 @@ $(document).ready(function () {
 									'你的裝置已被删除。',
 									'success'
 								);
+								listdevice();
 							},
 							error: function (xhr, ajaxOptions, thrownError) {
 								console.log(xhr.status);
@@ -273,22 +243,13 @@ $(document).ready(function () {
 
 				// ---------------inputRangecolor--------------------------------------
 
+
 			},
 			"error": function (error) {
 				console.log(error);
 			}
-
-
-
 		})
-
-		return interval;
-	}(), 100000);
-
-
-
-
-
+	}
 
 	// -------------------tabs------------------
 	$(function () {

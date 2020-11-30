@@ -86,7 +86,7 @@ p{
     box-shadow: 0px 3px 4px #aaa inset, 0px 2px 3px #fff !important;
     background: #F1F2F4  !important;
     color:#0B346E !important;
-    text-shadow: 0px 0px 20px #005CAF,0px 0px 20px #005CAF,0px 0px 20px #005CAF,0px 0px 20px #005CAF  !important;
+    text-shadow: 0px 0px 10px #005CAF,0px 0px 20px #005CAF,0px 0px 30px #005CAF,0px 0px 40px #005CAF  !important;
     font-weight:bold ;
   }
 
