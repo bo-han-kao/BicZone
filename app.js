@@ -4,7 +4,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var deviceRouter = require('./routes/device');
@@ -13,12 +12,12 @@ var sceneRouter = require('./routes/scene');
 var scheduleRouter = require('./routes/schedule');
 var scanRouter=require('./routes/scan');
 var upload=require('./routes/upload');
+
 // 測試頁面
 var indexNEWRouter = require('./routes/Test');
 var crudROuter = require('./routes/CRUDtest');
 const { group } = require('console');
 const { url } = require('inspector');
-
 
 
 var app = express();
@@ -44,12 +43,6 @@ app.use('/v1/upload',upload);
 // 測試頁面
 app.use('/Test', indexNEWRouter);
 app.use('/crudtest', crudROuter);
-
-
-
-
-
-
 
 
 

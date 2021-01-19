@@ -1,0 +1,54 @@
+ul{
+    padding-inline-start: 0px;
+    margin: 0px;
+  }
+  
+  p{
+    margin: 0px;
+  }
+  
+  .nav{
+    display: block;
+  }
+
+  .groupView{
+    display: grid;
+    grid-row-gap: 10px;
+    /* grid-template-rows: repeat(auto-fill, 150px); */
+    grid-template-columns: repeat(auto-fill, 150px);
+    height: 100%;
+    width: 100%;
+    justify-content: space-around;
+    overflow:scroll;
+    overflow-x:hidden;
+    overflow-y:auto;
+  }
+
+  .nav li {
+    /* position: relative; */
+    text-align: center;
+    margin: auto;
+    cursor: pointer;
+    display: block;
+    background-color: #f7f7f7;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    /* z-index: 1; */
+  }
+
+  /* .nav li i{
+    z-index: 2;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #DDD;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+
+
+  } */
+
+ 
+  

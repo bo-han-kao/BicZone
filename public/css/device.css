@@ -67,7 +67,10 @@
 	  height: 250px;
 	  margin-bottom: 20px;
   }
-
+ 
+  .card-title{
+	font-size: 0.9rem;
+  }
   
 /* --------------------------togglecss---------------------- */
 .toggle-btnd {

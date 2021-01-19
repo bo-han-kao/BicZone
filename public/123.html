@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
         integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <link rel=stylesheet type="text/css" href="">
+
     <style>
         body {
             background: #a8dadc;
@@ -26,21 +27,83 @@
             width: 100px;
             height: 100px;
             border-radius: 10px;
+        }
 
+        .box {
+            width: 100px;
+            height: 100px;
+            border: solid 1px black;
+            background-color: white;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap;
         }
     </style>
 </head>
 
 <body>
-    <button class="addbtn" type="button"><i class="fas fa-plus-square"></i></button>
+    <div class="container d-flex flex-wrap boxs">
 
-
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 
     <script>
+        box();
+        function box() {
+            let str = "";
+            for (let i = 0; i < 45; i++) {
+                str += '<div class="box" id=' + i + '>' + i + '</div>'
+            }
+            $('.container').html(str);
+        }
 
+        let items = $('.container>.box');
+        for (const item of items) {
+            // console.log(item);
+            $(item).prop('draggable', true)
+            item.addEventListener('dragstart', dragStart)
+            item.addEventListener('drop', dropped)
+            item.addEventListener('dragenter', cancelDefault)
+            item.addEventListener('dragover', cancelDefault)
+        }
+
+        function dragStart(e) {
+            var index = $(e.target).index();
+            console.log(index);
+            e.dataTransfer.setData('text/plain', index)
+        }
+
+        function dropped(e) {
+            // get new and old index
+            let oldIndex = e.dataTransfer.getData('text/plain')
+            let target = $(e.target)
+            let newIndex = target.index()
+
+            // remove dropped items at old place
+            let dropped = $(this).parent().children().eq(oldIndex)
+            console.log(dropped)
+            // insert the dropped items at new place
+            // if (newIndex < oldIndex) {
+            //     target.before(dropped)
+            // } else {
+            //     target.after(dropped)
+            // }
+            target.replaceChild(dropped,newIndex);    
+            
+        }
+
+        function cancelDefault(e) {
+            e.preventDefault()
+            e.stopPropagation()
+            return false
+        }
 
 
     </script>

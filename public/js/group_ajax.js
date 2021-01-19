@@ -17,30 +17,47 @@ $(document).ready(function () {
 
 
     function listgroup() {
-        let str = "";
-        str += '<ul class="nav">'
-        str += '<li><i class="clicki far fa-object-group fa-lg"></i></li>'
-        str += '</ul>'
+        $.ajax({
+            url: "http://127.0.0.1:5000/v1/group",
+            type: "GET",
+            async: false,
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            success: function (returnData) {
+                getdata = returnData.payload;
+                console.log(getdata.groups)
+                console.log(getdata.groups.length)
+                console.log(getdata.groups[1].name)
+                let str = "";
+                str += '<ul class="nav">'
+                str += '<li><i class="clicki far fa-object-group fa-lg"></i></li>'
+                str += '</ul>'
+        
+           
+        
+                for (let i = 0; i < getdata.groups.length; i++) {
+                    str += '<ul class="nav radio " id="' + getdata.groups[i].group_id+ '">'
+                    str += '<li><i  class="">' + getdata.groups[i].name + '</i></li>'
+                    str += '</ul>'
+                }
+                $('.navcss').html(str);
+        
+                $(".radio i").on("click", function () {
+                    $(".radio i").removeClass("radioactive");
+                    $(this).addClass("radioactive");
+                    let youclickid = $(this).parent().parent().attr("id");
+                    console.log(youclickid);
+                })
 
-        // for (let i = 0; i < groupMsg.length; i++) {
-        //     str += '<ul class="nav radio " id="' +groupMsg[i].group.group_id + '">'
-        //     str += '<li><i  class="">'+groupMsg[i].group.name+'</i></li>'
-        //     str += '</ul>'
-        // }
 
-        for (let i = 0; i < groupMsg.length; i++) {
-            str += '<ul class="nav radio " id="' + groupMsg[i].group.group_id + '">'
-            str += '<li><i  class="">' + groupMsg[i].group.name + '</i></li>'
-            str += '</ul>'
-        }
-        $('.navcss').html(str);
 
-        $(".radio i").on("click", function () {
-            $(".radio i").removeClass("radioactive");
-            $(this).addClass("radioactive");
-            let youclickid = $(this).parent().parent().attr("id");
-            console.log(youclickid);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr.status);
+                console.log(thrownError);
+            }
         })
+      
     }
 
 

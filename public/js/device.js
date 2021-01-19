@@ -22,8 +22,8 @@ $(document).ready(function () {
 					str += '<div class="d-flex card-head justify-content-around">'
 					str += '<h5 class="card-title">' + devicesdata[i].name + '</h5>'
 					str += '<div >'
-					str += '<img class="setting" src="/images/Notes.png" alt="">'
-					str += '<img class="delet" src="/images/Close.png" alt="">'
+					// str += '<img class="setting" src="/images/Notes.png" alt="">'
+					// str += '<img class="delet" src="/images/Close.png" alt="">'
 					str += '</div>'
 					str += '</div>'
 					str += '<div class="toggle-btn toggle-btnd active">'
@@ -47,43 +47,43 @@ $(document).ready(function () {
 				$('#listdevice').html(str);
 
 				// -------------------delet-----------------------------------------
-				$('.delet').off("click").on("click", function (e) {
-					let delet_id = $(this).parent().parent().parent().parent().parent().parent().attr('id');
-					console.log(delet_id);
-					let devices = {
-						"device_id": delet_id,
-					}
+				// $('.delet').off("click").on("click", function (e) {
+				// 	let delet_id = $(this).parent().parent().parent().parent().parent().parent().attr('id');
+				// 	console.log(delet_id);
+				// 	let devices = {
+				// 		"device_id": delet_id,
+				// 	}
 
-					swal({
-						title: '確定要解除配置嗎？',
-						type: 'warning',
-						showCancelButton: true,
-						confirmButtonColor: '#3085d6',
-						cancelButtonColor: '#d33',
-						confirmButtonText: '確定解除！',
-					}).then(function () {
-						$.ajax({
-							url: "http://127.0.0.1:5000/v1/device",
-							data: JSON.stringify({ devices: devices }),
-							type: "DELETE",
-							dataType: "json",
-							contentType: "application/json;charset=utf-8",
-							success: function (returnData) {
-								console.log(returnData);
-								swal(
-									'删除！',
-									'你的裝置已被删除。',
-									'success'
-								);
-								listdevice();
-							},
-							error: function (xhr, ajaxOptions, thrownError) {
-								console.log(xhr.status);
-								console.log(thrownError);
-							}
-						})
-					})
-				})
+				// 	swal({
+				// 		title: '確定要解除配置嗎？',
+				// 		type: 'warning',
+				// 		showCancelButton: true,
+				// 		confirmButtonColor: '#3085d6',
+				// 		cancelButtonColor: '#d33',
+				// 		confirmButtonText: '確定解除！',
+				// 	}).then(function () {
+				// 		$.ajax({
+				// 			url: "http://127.0.0.1:5000/v1/device",
+				// 			data: JSON.stringify({ devices: devices }),
+				// 			type: "DELETE",
+				// 			dataType: "json",
+				// 			contentType: "application/json;charset=utf-8",
+				// 			success: function (returnData) {
+				// 				console.log(returnData);
+				// 				swal(
+				// 					'删除！',
+				// 					'你的裝置已被删除。',
+				// 					'success'
+				// 				);
+				// 				listdevice();
+				// 			},
+				// 			error: function (xhr, ajaxOptions, thrownError) {
+				// 				console.log(xhr.status);
+				// 				console.log(thrownError);
+				// 			}
+				// 		})
+				// 	})
+				// })
 
 
 				// -------------------delet-----------------------------------------
